@@ -1,0 +1,135 @@
+*{margin: 0;padding: 0}
+li{list-style: none;}
+a{text-decoration: none;color: #333;}
+img {border: none;display: block;}
+.clearFix:after{
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+    width: 0;
+}
+.clearFix{zoom: 1}
+.fl{float: left;}
+.fr{float: right;}
+.wrap{
+    width: 980px;
+    margin: 0 auto;
+}
+/**************************/
+.shade_box{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+
+}
+.shade_bg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.3);
+}
+.shade_content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+/**************************/
+.page-top{
+    background-color: #e8593c;
+    height: 40px;
+    border-top: 1px solid #b56553;
+    border-bottom: 1px solid #b56553;
+}
+.page-top .page-content h2{
+    width: 100%;
+    line-height:40px;
+    color: #fff;
+    text-align: center;
+    font-size: 22px;
+}
+/***********************/
+.main{
+    margin-top: 10px;
+}
+.main .big-title{
+    font-size: 18px;
+}
+.main .task-input{
+    margin-top: 15px;
+    width: calc(100% - 20px);
+    height: 30px;
+    padding-left: 20px;
+    font-size: 12px;
+}
+.task-count{
+    margin-top: 10px;
+}
+.task-count .action a{
+    padding: 5px 20px;
+}
+.task-count .action a.active{
+    border:1px solid #ff8000;
+}
+.tasks {
+    margin-top: 10px;
+}
+.tasks .no-task-tip{
+    display: block;
+    color: #ccc;
+    margin-left: 25px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.todo-list .todo{
+    height: 40px;
+    border: 1px solid #999;
+    margin-bottom: 5px;
+    position: relative;
+}
+.tasks .todo-list .editing .edit{display: block;}
+.todo-list .completed .view label a{
+    color: #ccc;
+    font-size: 22px;
+    text-decoration: line-through;
+}
+.todo-list .todo .edit{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    width: calc(100% - 50px);
+    height: 40px;
+    border: none;
+    padding-left: 50px;
+    font-size: 24px;
+}
+.todo .view input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+    margin-top: 13px;
+    margin-right: 10px;
+}
+.todo .view label a{
+    font-size: 24px;
+    line-height:40px;
+    color: #000;
+}
+.todo .view .destroy{
+    height: 40px;
+    width: auto;
+    line-height:40px;
+    margin-right: 20px;
+    font-size: 14px;
+    color: #f00;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="datura"/>
+    <meta name="copyright" content="版权"/>
+    <meta name="description" content="描述"/>
+    <meta name="keywords" content="关键字"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="screen-orientation" content="portrait"><!-- uc强制竖屏 -->
+    <meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/animate.css" />
+</head>
+<body>
+    <div class="page-top">
+        <div class="page-content wrap">
+            <h2>计划任务表</h2>
+        </div>
+    </div>
+    <div class="main wrap">
+        <h3 class="big-title">添加任务：</h3>
+        <input
+                @keyup.enter = "addTodo"
+                v-model="todo"
+                type="text"
+                placeholder="例如：吃饭睡觉打豆豆：   提示：+回车即可添加任务"
+                class="task-input" />  <!-- addTodo(123,$event)行间传参的时候，vue里面还要用事件对象的话就用$event-->
+        <ul class="task-count clearFix">
+            <li class="fl" style="color: #ff8000;margin-left: 20px;">
+                <!--{{
+                    list.filter(function(item){
+                        return !item.isChecked
+                    }).length
+                }}-->
+                {{ noCheckLength }}
+                个未完成任务
+            </li>
+            <li class="action fr">
+                <a href="#all" class="fl" :class="{active:activing == 1}" @click="active(1)">所有任务</a>
+                <a href="#unfinished" class="fl" :class="{active:activing == 2}" @click="active(2)">未完成任务</a>
+                <a href="#finished" class="fl" :class="{active:activing == 3}" @click="active(3)">已完成任务</a>
+            </li>
+        </ul>
+        <h3 class="big-title">任务列表：</h3>
+        <div class="tasks">
+            <span class="no-task-tip" v-show="!list.length">还没有添加任何任务</span>
+            <!--<span class="no-task-tip tip-toggle">
+                <input type="checkbox" checked="" class="toggle" />
+                <span>全部标记为已完成</span>
+            </span>-->
+            <ul class="todo-list" v-show="list.length">
+                <li class="todo" :class="{completed: item.isChecked,editing: item === editorTodos}" v-for="item in filterList">
+                    <div class="view">
+                        <input class="fl" type="checkbox" v-model="item.isChecked"  class="toggle">
+                        <!--<label class="fl" for=""><a href="javascript:;" v-text="item.title"></a></label>-->
+                        <label class="fl" for=""><a href="javascript:;" @dblclick="edtorTodo(item)">{{ item.title }}</a></label>
+                        <a href="javascript:;" class="destroy fr" @click="delTodo(item)">删除</a>
+                    </div>
+                    <input @blur="edtorTodoed(item)" @keyup.13="edtorTodoed(item)" @keyup.esc="cancelTodo(item)" v-focus="editorTodos === item" type="text" class="edit" v-model="item.title" />
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="shade_box"  v-show="onceShow2">
+        <div class="shade_bg"></div>
+        <transition enter-active-class="animated zoomInLeft" leave-active-class="animated zoomOutRight">
+            <div class="shade_content" v-show="onceShow">
+                <img src="./image/welcome.gif" alt="欢迎动画" >
+            </div>
+        </transition>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script src="./js/app.js"></script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
